@@ -8,3 +8,4 @@ Route::get('/', function(){
 });
 
 Route::get('/evaluations/{company}', [EvaluationController::class, 'index']);
+Route::post('/evaluations/{company}', [EvaluationController::class, 'store']);
