@@ -29,6 +29,24 @@ services:
         networks:
             - microservices02
 
+    #queue
+    queue:
+        build: 
+            args: 
+                user: micro_02      #Same as micro_02
+                uid: 1000           #Same as micro_02
+            context: ./
+            dockerfile: Dockerfile
+        command: 'php artisan queue:work'
+        restart: unless-stopped
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - redis
+            #- db_micro_02      #If saving queues on database
+        networks:
+            - microservices02
+
     #mysql
     db_micro_02:
         image: mysql:5.7.22
@@ -44,6 +62,16 @@ services:
             - 3309:3306
         networks:
             - microservices02
+
+    #redis
+    redis:
+        image: redis:latest
+        ports:
+            - 6379:6379
+        networks:
+            - microservices02
+        
+        
     
 networks:
     microservices02:
