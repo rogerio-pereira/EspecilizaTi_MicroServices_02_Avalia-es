@@ -8,7 +8,7 @@ trait ConsumeExternalService
 {
     public function headers(array $headers = [])
     {
-        array_push($headers, [
+        array_merge($headers, [
             'Accept' => 'application/json',
             'Authorization' => $this->token,
         ]);

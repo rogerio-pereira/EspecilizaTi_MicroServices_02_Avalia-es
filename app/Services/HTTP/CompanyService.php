@@ -8,20 +8,18 @@ class CompanyService
 {
     use ConsumeExternalService;
 
-    protected $token;
     protected $url;
+    protected $token;
 
     public function __construct()
     {
-        $this->token = config('services.micro_01.token');
         $this->url = config('services.micro_01.url');
+        $this->token = config('services.micro_01.token');
     }
 
     public function getCompany(string $company)
     {
         //Metodo request está dentro da trait ConsumeExternalService
-        $response = $this->request('get', "/companies/{$company}");
-        
-        dd($response->body());
+        return $this->request('get', "/companies/{$company}");
     }
 }
