@@ -71,8 +71,6 @@ services:
         networks:
             - microservices02
         
-        
-    
 networks:
     microservices02:
         driver: bridge    
