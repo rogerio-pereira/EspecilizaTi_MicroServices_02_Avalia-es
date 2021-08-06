@@ -2,7 +2,7 @@
 
 namespace App\Services\HTTP;
 
-use App\Services\Traits\ConsumeExternalService;
+use RogerioPereira\EspecializatiMicroserviceCommon\Services\Traits\ConsumeExternalService;
 
 class CompanyService
 {
